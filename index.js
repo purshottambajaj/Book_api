@@ -58,6 +58,10 @@ app.get("/cat/:cat",(req,res)=>
          { pub.books.push(req.params.title);}
 
     }); 
+    res.json({ books : database.books,
+           Pub :database.publication,
+                 message: 'Book updated successfully' });
+ }  );
 
 //Delete book by isbn 
 app.delete('/book/delete/:isbn', (req, res) => {
@@ -73,14 +77,10 @@ app.delete('/book/delete/:isbn', (req, res) => {
   
     
 
-    res.json({ books : database.books,
-           Pub :database.publication,
-                 message: 'Book updated successfully' });
- }  );
  
 
 
-app.listen(3000,()=>{
+app.listen(4000,()=>{
     console.log("Server is rumm")
 }
 )
