@@ -48,10 +48,39 @@ app.get("/cat/:cat",(req,res)=>
    
  });
  
+  
+  //Update books of Publication 
+ app.put('/publication/update/book/:title',(req,res)=>{
+    
+    database.publication.forEach((pub) =>
+    {
+        if(pub.id===req.body.pubid)
+         { pub.books.push(req.params.title);}
+
+    }); 
+
+//Delete book by isbn 
+app.delete('/book/delete/:isbn', (req, res) => {
+   
+    const updatedBooks = database.books.filter(
+        (book) => book.ISBN !== req.params.isbn);
+  
+    
+    database.books = updatedBooks;
+  
+    return res.json({ books: database.books });
+  });
+  
+    
+
+    res.json({ books : database.books,
+           Pub :database.publication,
+                 message: 'Book updated successfully' });
+ }  );
  
 
 
-app.listen(4000,()=>{
+app.listen(3000,()=>{
     console.log("Server is rumm")
 }
 )
