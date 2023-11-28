@@ -1,12 +1,19 @@
 const express = require('express');
 const database= require('./database');
 const bodyParser = require('body-parser');
+const mongo=require('mongoose');
+require('dotenv').config();
 const app = express();  
 
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
+
+mongo.connect(process.env.Mongo_Url )
+.then(( ) => {console.log("connected");
+})
+
 //all books
 app.get("/",(req,res)=>
  { 
