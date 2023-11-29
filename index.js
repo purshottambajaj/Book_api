@@ -1,5 +1,8 @@
 const express = require('express');
-const database= require('./database');
+const database = require('./database/database');
+const Bookmodule = require('./database/book');
+const author = require('./database/author');
+const publication =require('./database/publication')
 const bodyParser = require('body-parser');
 const mongo=require('mongoose');
 require('dotenv').config();
